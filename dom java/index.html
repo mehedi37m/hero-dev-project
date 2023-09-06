@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to my dom</h1>
+    </header>
+
+    <main>
+  
+        <section>
+            <h1 id="fruits-tittle" class="some-class blue-bg">fruits i like</h1>
+            <ul id="places-list">
+                <li>apple</li>
+                <li>banana</li>
+                <li>mango</li>
+                <li>orange</li>/
+            </ul>
+        </section>
+        <section>
+            <h1 id="fruits-tittle" class="some-class blue-bg">fruits i like</h1>
+            <ul id="places-list">
+                <li>apple</li>
+                <li>banana</li>
+                <li>mango</li>
+                <li>orange</li>
+            </ul>
+        </section>
+        <section>
+            <h1 id="fruits-tittle" class="some-class blue-bg">fruits i like</h1>
+            <ul id="places-list">
+                <li>apple</li>
+                <li>banana</li>
+                <li>mango</li>
+                <li>orange</li>
+            </ul>
+        </section>
+
+        <h1>My awesome dom</h1>
+
+        <ul>
+            <li>jalali set</li>
+            <li>l love</li>
+            <li>hello world</li>
+        </ul>
+
+
+    </main>
+    
+    <script src="js/dom.js"></script>
+
+    <script>
+        const liCollection = document.getElementsByTagName('li');
+        for( const li of liCollection){
+            console.log(li.innerText);
+        }
+        
+        
+    </script>
+</body>
+</html>

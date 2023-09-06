@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- use daisyui  -->
+    
+<link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+<body>
+<header>
+     <h1>hello world</h1>
+</header>
+
+
+<main class="container mx-auto">
+    <section>
+        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="search phone" id="search-input">
+        <button onclick="handleSearch()" class="btn btn-secondary">Search</button>
+    </section>
+  <section >
+
+    <div id="loading-dots" class="text-center py-40 hidden">
+        <span class="loading loading-dots text-primary loading-md "></span>
+    </div>
+             <div id="phone-container" class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+
+             </div>
+
+             <!-- show button  -->
+             <div id="show-container" class="hidden text-center my-10">
+                <button  onclick="showAllContainer()" class="btn btn-primary">Show All</button>
+             </div>
+  </section>
+
+  <!-- show details modal  -->
+
+<!-- Open the modal using ID.showModal() method -->
+<button class="btn" onclick="show_modal.showModal()">open modal</button>
+<dialog id="show_modal" class="modal">
+  <form method="dialog" class="modal-box">
+    <h3 id="show-phone-name" class="font-bold text-lg"></h3>
+
+    <div id="show-phone-img">
+      
+    </div>
+
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <!-- if there is a button in form, it will close the modal -->
+      <button class="btn">Close</button>
+    </div>
+  </form>
+</dialog>
+
+
+</main>
+
+<footer>
+
+</footer>
+
+
+
+
+
+    <script src="./js/first.js"></script>
+</body>
+</html>
