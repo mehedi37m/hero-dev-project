@@ -1,0 +1,30 @@
+import React from "react";
+import { BsBook } from "react-icons/bs";
+
+const Door = ({ card,  handleAddBookmark }) => {
+  const { id, name, image, credit, price, details } = card;
+  return (
+    <div className="">
+      <div className="card  px-3 py-3  bg-base-100 shadow-xl">
+        <figure className=" ">
+          <img src={image} alt="Shoes" className="rounded-xl w-full " />
+        </figure>
+
+        <h2 className="card-title my-3">{name}</h2>
+        <h2 className="text-start">{details}</h2>
+        <div className="flex justify-between my-5">
+          <p>
+            <span className="font-bold">$</span> Price: {price}{" "}
+          </p>
+          <div className="flex gap-3 items-center">
+            <BsBook></BsBook>
+            <p>Credit: {credit}hr</p>
+          </div>
+        </div>
+        <button onClick={()=> handleAddBookmark(card,credit,price)} className="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  );
+};
+
+export default Door;

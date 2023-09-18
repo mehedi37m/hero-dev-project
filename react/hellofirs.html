@@ -1,0 +1,87 @@
+import React, { useEffect, useState } from "react";
+import Door from "./Door/Door";
+import Bookmarks from "../Bookmarks/Bookmarks";
+import Swal from "sweetalert2";
+
+
+const Home = () => {
+  const [cards, setCards] = useState([]);
+  const [bookmarks, setBookmarks] = useState([]);
+  const [credits, setCredits] = useState(0);
+//   const [remain, setRemain] = useState(20);
+  const [newRemain, setNewRemain] = useState(20);
+
+  const [price, setPrice] = useState(0);
+
+  //   const handleCredit = time => {
+
+  //   }
+
+  const handleAddBookmark = (item, time, price) => {
+    const newItem = [...bookmarks, item];
+let remain = 20;
+    let newRemain = 0;
+
+    const newCredit = credits + time;
+    if (newCredit <= 20) {
+      setCredits(newCredit);
+      newRemain = remain - newCredit;
+      setBookmarks(newItem);
+
+      if (newRemain <= 20) {
+        setNewRemain(newRemain);
+      } else {
+        Swal.fire('Use of Maximum Credits')
+      }
+    } else {
+        Swal.fire('Use of Maximum Credits')
+    }
+
+    const newPrice = price + price;
+    setPrice(newPrice);
+  };
+
+  useEffect(() => {
+    fetch("course.json")
+      .then((res) => res.json())
+      .then((data) => setCards(data));
+  }, []);
+
+  return (
+    <section className="container mx-auto ">
+      <div className="lg:flex gap-5 my-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
+          {cards.map((card, idx) => (
+            <Door
+              key={idx}
+              card={card}
+              handleAddBookmark={handleAddBookmark}
+            ></Door>
+          ))}
+        </div>
+        <div className="lg:w-1/3 p-3 ">
+          <div className="mb-5 text-blue-600 font-semibold">Credit Hour Remaining : {newRemain}h</div>
+          <hr />
+          <div className="divide-x-2"></div>
+          <div>
+            <h1 className="font-bold mb-8 mt-3">Course Name</h1>
+          </div>
+          {bookmarks.map((bookmark, idx) => (
+            <Bookmarks key={idx} bookmark={bookmark}></Bookmarks>
+          ))}
+          
+          <div>
+            <hr className="mt-5" />
+            <h1 className="font-semibold my-5">
+              Total Credit Hour : {credits}{" "}
+            </h1>
+            <hr />
+            <h1 className="font-semibold mt-3"> Total Price : {price} USD</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Home;
