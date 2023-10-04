@@ -11,6 +11,8 @@ import Home from './components/Home/Home.jsx';
 import AppliedJobs from './components/AppliedJobs/AppliedJobs.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import JobDetails from './components/JobDetails/JobDetails';
+import Login from './components/Login/Login';
+import AuthProvider from './firebase/AuthProvider';
 
 
 const router = createBrowserRouter([
@@ -34,12 +36,19 @@ const router = createBrowserRouter([
         element:<JobDetails></JobDetails>,
         loader: ()=> fetch('../jobs.json')
       },
+      {
+        path: '/login',
+        element:<Login></Login>
+      },
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+ 
+  <AuthProvider>
+ <React.StrictMode>
   <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </AuthProvider>
 )
